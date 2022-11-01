@@ -9,17 +9,16 @@ namespace Zoo.Animals
 {
     public class LionAnimals: AbstractAnimals
     {
-            public LionAnimals(string name, int age) : base(name, age)
-            {
+        public LionAnimals(string name, int age,int requiredSquare, int amountOfFood) : base(name, age, requiredSquare,  amountOfFood)
+        {
                 Biome = BiomeType.Tundra;
-                Food = FoodType.Meat;
+                List <string> food=new List<string>() { "Meat", "Birds" };
                 _sound = "Rrar";
-             
-            }
-
-            public override void DoPlay()
-            {
-                Console.WriteLine($"{Name} run");
-            }
         }
+
+        public override void DoPlay()
+        {
+                Console.WriteLine($"{Name} run");
+        }
+    }
 }

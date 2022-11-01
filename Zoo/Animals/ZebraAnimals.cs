@@ -10,10 +10,10 @@ namespace Zoo.Animals
 {
     public class ZebraAnimals:AbstractAnimals 
     {
-        public ZebraAnimals(string name, int age):base(name, age)
+        public ZebraAnimals(string name, int age, int requiredSquare, int amountOfFood) : base(name, age, requiredSquare, amountOfFood)
         {
             Biome = BiomeType.Savanna;
-            Food = FoodType.Grass;
+            List<string> food = new List<string>() { "Grass", "Leaves","Bark" };
             _sound = "Firf-Firf";
         }
 

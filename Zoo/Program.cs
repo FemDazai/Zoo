@@ -1,6 +1,8 @@
 ﻿using Zoo;
 using Zoo.Optionss;
 using Zoo.Animals;
+using System.Collections;
+using System.Collections.Concurrent;
 
 //Console.WriteLine(BiomeType.Savanna);
 //Console.WriteLine(FoodType.Grass);
@@ -10,9 +12,11 @@ using Zoo.Animals;
 //a.Age = -4;
 //a.TheAmountOfFoodConsumedPerDay = 2;
 //a.DoSound();
-ZebraAnimals zebra = new ZebraAnimals("Marty",5);
-LionAnimals lion = new LionAnimals("Alex", 3);
+ZebraAnimals zebra = new ZebraAnimals("Marty",5,12,8);
+LionAnimals lion = new LionAnimals("Alex", 3,55,88);
 zebra.DoSound();
 lion.DoSound();
 zebra.DoPlay();
+zebra.DoEating("Grass");
 lion.DoPlay();
+//lion.DoEating();
