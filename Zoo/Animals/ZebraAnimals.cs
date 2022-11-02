@@ -13,7 +13,7 @@ namespace Zoo.Animals
         public ZebraAnimals(string name, int age, int requiredSquare, int amountOfFood) : base(name, age, requiredSquare, amountOfFood)
         {
             Biome = BiomeType.Savanna;
-            List<string> food = new List<string>() { "Grass", "Leaves","Bark" };
+           FoodType = new List<string>() { "Grass", "Leaves","Bark" };
             _sound = "Firf-Firf";
         }
 

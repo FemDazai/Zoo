@@ -12,7 +12,7 @@ namespace Zoo.Animals
         public LemurAnimals(string name, int age, int requiredSquare, int amountOfFood) : base(name, age, requiredSquare, amountOfFood)
             {
                 Biome = BiomeType.Tundra;
-                List<string> food = new List<string>() { "Flowers", "Fruits","" };
+            FoodType = new List<string>() { "Flowers", "Fruits", "Leaves" };
                 _sound = "Aq-Aq-Aq";
             }
 

@@ -55,7 +55,7 @@ namespace Zoo.Animals
         public int AmountOfFood { get; protected set; }
 
         public bool IsPradator { get; protected set; }
-        List<string> FoodType;
+        public  List<string> FoodType;
         public AbstractAnimals(string name, int age, int requiredSquare, int amountOfFood)
 
         {

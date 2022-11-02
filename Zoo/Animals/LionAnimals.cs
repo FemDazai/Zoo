@@ -12,7 +12,7 @@ namespace Zoo.Animals
         public LionAnimals(string name, int age,int requiredSquare, int amountOfFood) : base(name, age, requiredSquare,  amountOfFood)
         {
                 Biome = BiomeType.Tundra;
-                List <string> food=new List<string>() { "Meat", "Birds" };
+            FoodType = new List<string>() { "Meat", "Birds" };
                 _sound = "Rrar";
         }
 
