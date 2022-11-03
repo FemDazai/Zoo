@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Zoo.Optionss;
 
 namespace Zoo.Animals
 {
-    public abstract class AbstractAnimals
+    public abstract class AbstractAnimal
     {
         private string _name;
         public string Name
@@ -50,30 +46,21 @@ namespace Zoo.Animals
 
         public BiomeType Biome { get; protected set; }
 
-        public int RequiredSquare { get; protected set; }
+        public int Square { get; protected set; }
 
         public int AmountOfFood { get; protected set; }
 
-        public bool IsPradator { get; protected set; }
+        public AnimalFoodType Kind { get; protected set; }
+
         public  List<string> FoodType;
-        public AbstractAnimals(string name, int age, int requiredSquare, int amountOfFood)
+
+        public AbstractAnimal(string name, int age, int square , int amountOfFood)   
 
         {
             Name = name;
             Age = age;
-            RequiredSquare = requiredSquare;
+            Square = square;
             AmountOfFood = amountOfFood; 
-            //FoodType = new List<string>();
-            //{
-            //   "Meat",
-            //  "Birds",
-            //  "Flowers",
-            //  "Fruits",
-            //  "Leaves",
-            //  "Grass", 
-            //  "Leaves",
-            //  "Bark"
-            //};  
         }
         protected string _sound;
 

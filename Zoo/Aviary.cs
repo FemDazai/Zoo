@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Zoo.Animals;
 using Zoo.Optionss;
 
@@ -10,18 +6,25 @@ namespace Zoo
 {
     public class Aviary
     {
-        public string AviaryName { get; protected set; }
-        public BiomeType AviaryBiome { get; protected set; }
-
-        public int AviaryRequiredSquare { get; protected set; }
-        public Aviary(string name, BiomeType biome, int requiredSquare)
+        public string Name { get; protected set; }
+        public BiomeType Biome { get; protected set; }
+        public int Square { get; protected set; }
+        public int FilledSquare { get; protected set; }
+        public AnimalFoodType AnimalFoodType { get; set; }
+        public List<AbstractAnimal>Animals { get; set;}
+        protected int _filledSquare;
+        public Aviary(string name, BiomeType biome, int requiredSquare, AnimalFoodType animalFoodType)
 
         {
-            AviaryName = "Herbivores";
-            AviaryBiome = BiomeType.Savanna ;
-            AviaryRequiredSquare = 450;
+            Name = "Herbivores";
+            Biome = BiomeType.Savanna ;
+            Square = 450;
+            AnimalFoodType = animalFoodType;
         }
-
-        public List<AbstractAnimals>Animals { get; set; }
+        public void AddAnimal(AbstractAnimal animal)
+        {
+            if (AnimalFoodType==AnimalFoodType.Herbivore)
+            Animals.Add(animal);
+        }
     }
 }

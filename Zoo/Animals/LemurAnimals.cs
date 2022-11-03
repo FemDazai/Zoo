@@ -7,7 +7,7 @@ using Zoo.Optionss;
 
 namespace Zoo.Animals
 {
-    public class LemurAnimals : AbstractAnimals
+    public class LemurAnimals : AbstractAnimal
         {
         public LemurAnimals(string name, int age, int requiredSquare, int amountOfFood) : base(name, age, requiredSquare, amountOfFood)
             {

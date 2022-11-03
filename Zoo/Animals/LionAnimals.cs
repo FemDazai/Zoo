@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Zoo.Optionss;
 
 namespace Zoo.Animals
 {
-    public class LionAnimals: AbstractAnimals
+    public class LionAnimals: AbstractAnimal
     {
         public LionAnimals(string name, int age,int requiredSquare, int amountOfFood) : base(name, age, requiredSquare,  amountOfFood)
         {
                 Biome = BiomeType.Tundra;
-            FoodType = new List<string>() { "Meat", "Birds" };
+               FoodType = new List<string>() { "Meat", "Birds" };
                 _sound = "Rrar";
         }
 

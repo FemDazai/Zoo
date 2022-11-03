@@ -1,22 +1,23 @@
 ﻿using Zoo;
 using Zoo.Optionss;
 using Zoo.Animals;
-using System.Collections;
-using System.Collections.Concurrent;
+
 
 //Console.WriteLine(BiomeType.Savanna);
-//Console.WriteLine(FoodType.Grass);
-//Zebra a = new Zebra("Marty");
+////Console.WriteLine(FoodType.Grass);
+ZebraAnimals zebra = new ZebraAnimals("Marty", 5, 12, 8);
 //a.Name = "jj";
 //a.Name = " g";
-//a.Age = -4;
+//zebra.Age = -4;
 //a.TheAmountOfFoodConsumedPerDay = 2;
 //a.DoSound();
-ZebraAnimals zebra = new ZebraAnimals("Marty",5,12,8);
+
 LionAnimals lion = new LionAnimals("Alex", 3,55,88);
+LemurAnimals lemur = new LemurAnimals("Julien", 5,12,2);
 zebra.DoSound();
 lion.DoSound();
 zebra.DoPlay();
-zebra.DoEating("Grass");
+zebra.DoEating("Meat");
+lemur.DoEating("Fruits");
+
 lion.DoPlay();
-//lion.DoEating();
