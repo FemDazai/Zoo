@@ -9,11 +9,12 @@ namespace Zoo.Animals
 {
     public class LemurAnimals : AbstractAnimal
         {
-        public LemurAnimals(string name, int age, int requiredSquare, int amountOfFood) : base(name, age, requiredSquare, amountOfFood)
+        public LemurAnimals(string name, int age) : base(name, age, 10, 1)
             {
-                Biome = BiomeType.Tundra;
-            FoodType = new List<string>() { "Flowers", "Fruits", "Leaves" };
-                _sound = "Aq-Aq-Aq";
+               Biome = BiomeType.Tundra;
+               Kind = AnimalFoodType.Herbivore;
+               FoodType = new List<string>() { "Flowers", "Fruits", "Leaves" };
+               _sound = "Aq-Aq-Aq";
             }
 
         public override void DoPlay()

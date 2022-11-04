@@ -5,11 +5,12 @@ namespace Zoo.Animals
 {
     public class ZebraAnimals:AbstractAnimal 
     {
-        public ZebraAnimals(string name, int age, int requiredSquare, int amountOfFood) : base(name, age, requiredSquare, amountOfFood)
+        public ZebraAnimals(string name, int age) : base(name, age, 30, 10)
         {
             Biome = BiomeType.Savanna;
+            Kind = AnimalFoodType.Herbivore;
             Age = age;
-           FoodType = new List<string>() { "Grass", "Leaves","Bark" };
+            FoodType = new List<string>() { "Grass", "Leaves","Bark" };
             _sound = "Firf-Firf";
         }
 

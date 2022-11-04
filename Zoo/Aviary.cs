@@ -9,22 +9,34 @@ namespace Zoo
         public string Name { get; protected set; }
         public BiomeType Biome { get; protected set; }
         public int Square { get; protected set; }
-        public int FilledSquare { get; protected set; }
         public AnimalFoodType AnimalFoodType { get; set; }
-        public List<AbstractAnimal>Animals { get; set;}
-        protected int _filledSquare;
-        public Aviary(string name, BiomeType biome, int requiredSquare, AnimalFoodType animalFoodType)
+        public List<AbstractAnimal>Animals { get; protected set;}
+        protected int _filledArea;
+        public Aviary(string name, BiomeType biome, int square)
 
         {
-            Name = "Herbivores";
+            Name = name;
             Biome = BiomeType.Savanna ;
-            Square = 450;
-            AnimalFoodType = animalFoodType;
+            Square = square;
+            Animals = new List<AbstractAnimal>();    
         }
-        public void AddAnimal(AbstractAnimal animal)
+
+
+        public string AddAnimal(AbstractAnimal animal)
         {
-            if (AnimalFoodType==AnimalFoodType.Herbivore)
-            Animals.Add(animal);
+            if (Biome != animal.Biome)
+            {
+                return($" In {Name} didn't settle {animal.Name} due to biome");
+            }
+            else if ( _filledArea < Square)
+            {
+                return($" In {Name} didn't settle {animal.Name} due to  lack of space");
+            }
+            else
+            { 
+                Animals.Add(animal);
+                return($" In {Name} settle {animal.Name }");
+            }               
         }
     }
 }

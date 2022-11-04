@@ -5,11 +5,12 @@ namespace Zoo.Animals
 {
     public class LionAnimals: AbstractAnimal
     {
-        public LionAnimals(string name, int age,int requiredSquare, int amountOfFood) : base(name, age, requiredSquare,  amountOfFood)
+        public LionAnimals(string name, int age) : base(name, age, 30,  6)
         {
-                Biome = BiomeType.Tundra;
+               Biome = BiomeType.Savanna;
+               Kind = AnimalFoodType.Predator;
                FoodType = new List<string>() { "Meat", "Birds" };
-                _sound = "Rrar";
+               _sound = "Rrar";
         }
 
         public override void DoPlay()

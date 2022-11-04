@@ -60,7 +60,7 @@ namespace Zoo.Animals
             Name = name;
             Age = age;
             Square = square;
-            AmountOfFood = amountOfFood; 
+            AmountOfFood = amountOfFood;
         }
         protected string _sound;
 
@@ -69,15 +69,19 @@ namespace Zoo.Animals
             Console.WriteLine($"{Name}, makes sounds {_sound}");
         }
         
-        public void DoEating(string food)
+        public void DoEating(string food,int amountOfFood)
         {
-            if (FoodType.Contains(food))
+            if (!FoodType.Contains(food))
             {
-                Console.WriteLine($" {Name} eats  {food}");
+                Console.WriteLine($" {Name} don't eats {amountOfFood} kg {food}");
+            }
+            else if (amountOfFood > AmountOfFood)
+            {
+                Console.WriteLine($" {amountOfFood} kg  {food} , is too much for {Name}");
             }
             else
             {
-                Console.WriteLine($" {Name} don't eats  {food}");
+                Console.WriteLine($" {Name} eats {amountOfFood} kg {food}");
             }
         }
         public abstract void DoPlay();
