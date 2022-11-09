@@ -1,4 +1,5 @@
 ﻿
+using System.Security.Cryptography.X509Certificates;
 using Zoo.Animals;
 using Zoo.Optionss;
 
@@ -7,6 +8,7 @@ namespace Zoo
     public class Aviary
     {
         public string Name { get; protected set; }
+        public string Species { get; protected set; }
         public BiomeType Biome { get; protected set; }
         public int Square { get; protected set; }
         public List<AbstractAnimal>Animals { get; protected set;}
@@ -101,8 +103,24 @@ namespace Zoo
             }
             else
             {
-                throw new ArgumentException("Empty aviary");
+                return new Message()
+                {
+                    Text = $"Empty {Name} aviary ,no one to evict",
+                    SenderName = Name,
+                    SenderType = "Aviary",
+                    MessageType = MessageType.EmptyAviary,
+                };
             }
+        }
+
+        public override bool Equals(object? obj)
+        {
+
+            return obj is Aviary aviary &&
+                   Name == aviary.Name &&
+                   Biome == aviary.Biome &&
+                   Square == aviary.Square &&
+                   Animals.Count == aviary.Animals.Count;
         }
     }
 }

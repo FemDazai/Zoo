@@ -3,15 +3,15 @@ using Zoo.Optionss;
 
 namespace Zoo.Animals
 {
-    public class LionAnimals: AbstractAnimal
+    public class FoxAnimals : AbstractAnimal
     {
-        public LionAnimals(string name, int age) : base(name, age, 30,  6)
+        public FoxAnimals(string name, int age) : base(name, age, 15, 5)
         {
-            Species = "Lion";
-               Biome = BiomeType.Savanna;
+            Species = "Fox";
+            Biome = BiomeType.Forest;
             IsPredator = true;
-            FoodType = new List<string>() { "Meat", "Birds" };
-               _sound = "Rrar";
+            FoodType = new List<string>() { "Meat", "Birds","Beetles" };
+            _sound = "Qruur";
         }
 
         public override Message DoPlay()
@@ -20,7 +20,7 @@ namespace Zoo.Animals
             {
                 Text = $"{Name} run",
                 SenderName = Name,
-                SenderType = "Lion",
+                SenderType = "Fox",
                 MessageType = MessageType.AnimalDoPlay,
             };
         }

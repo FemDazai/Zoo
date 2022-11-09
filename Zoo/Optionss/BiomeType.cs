@@ -8,7 +8,8 @@ namespace Zoo.Optionss
         Tundra,
         Tropic,
         Taiga, 
-        Grassland
+        Grassland,
+        Forest
 
     }
 }

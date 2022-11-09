@@ -18,9 +18,15 @@ namespace Zoo.Animals
                _sound = "Aq-Aq-Aq";
             }
 
-        public override void DoPlay()
+        public override Message DoPlay()
         {
-            Console.WriteLine($"{Name} run");
+            return new Message()
+            {
+                Text = $"{Name} run and jump",
+                SenderName = Name,
+                SenderType = "Lemur",
+                MessageType = MessageType.AnimalDoPlay,
+            };
         }
     }
 }

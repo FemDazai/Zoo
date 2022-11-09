@@ -111,6 +111,6 @@ namespace Zoo.Animals
                 };
             }
         }
-        public abstract void DoPlay();
+        public abstract Message DoPlay();
     }
 }

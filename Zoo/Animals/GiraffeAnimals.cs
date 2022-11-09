@@ -1,5 +1,7 @@
 ﻿
 using Zoo.Optionss;
+using Zoo.Animals;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Zoo.Animals
 {
@@ -14,9 +16,16 @@ namespace Zoo.Animals
             _sound = "aa-aa-aa";
         }
 
-        public override void DoPlay()
+        public override Message  DoPlay() 
         {
-            Console.WriteLine($"{Name} run");
+          return new Message()
+        {
+            Text = $"{Name} run",
+            SenderName = Name,
+            SenderType = "Giraffe",
+            MessageType = MessageType.AnimalDoPlay,
+         };
         }
     }
+
 }

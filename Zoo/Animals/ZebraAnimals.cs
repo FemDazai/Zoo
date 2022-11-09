@@ -15,9 +15,15 @@ namespace Zoo.Animals
             _sound = "Firf-Firf";
         }
 
-        public override void DoPlay()
+        public override Message DoPlay()
         {
-            Console.WriteLine($"{Name} run and jump");
+            return new Message()
+            {
+                Text = $"{Name} run and jump",
+                SenderName = Name,
+                SenderType = "Zebra",
+                MessageType = MessageType.AnimalDoPlay,
+            }; 
         }
     }
 

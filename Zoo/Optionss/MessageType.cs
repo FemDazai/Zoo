@@ -18,6 +18,7 @@ namespace Zoo.Optionss
         NeighborsDontFit,
         AnimalAdd,
         AnimalRemove,
+        EmptyAviary,
 
 
     }
