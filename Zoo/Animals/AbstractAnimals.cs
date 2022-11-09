@@ -58,7 +58,6 @@ namespace Zoo.Animals
         public  List<string> FoodType;
 
         public AbstractAnimal(string name, int age, int square , int amountOfFood)   
-
         {
             Name = name;
             Age = age;

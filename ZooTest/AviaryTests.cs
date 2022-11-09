@@ -14,7 +14,6 @@ namespace ZooTest
             Aviary actualAviary = aviary;
             Assert.AreEqual(expectedAviary, actualAviary);
             Assert.AreEqual(expectedMessage, actualMessage);  
-
         }
 
         [TestCaseSource(typeof(RemoveAnimalTestSource))]

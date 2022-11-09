@@ -26,5 +26,4 @@ namespace Zoo.Animals
             }; 
         }
     }
-
 }

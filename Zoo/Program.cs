@@ -26,5 +26,6 @@ GiraffeAnimals giraffe = new GiraffeAnimals("Melman", 2);
 GiraffeAnimals lion = new GiraffeAnimals("Melm", 2);
 Console.WriteLine(aviary.AddAnimal(giraffe));
 Console.WriteLine(aviary.AddAnimal(lion));
+Console.WriteLine(aviary.AnimalsDoSound(lion));
 //Console.WriteLine(aviary.Remove(lion));\\
 

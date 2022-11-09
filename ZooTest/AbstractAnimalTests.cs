@@ -13,7 +13,6 @@ namespace ZooTest
             Message actualMessage = animal.DoSound();
             AbstractAnimal actualAbstractAnimal = animal;
             Assert.AreEqual(expectedMessage, actualMessage);
-
         }
     }
 }

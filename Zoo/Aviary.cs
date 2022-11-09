@@ -12,15 +12,14 @@ namespace Zoo
         public BiomeType Biome { get; protected set; }
         public int Square { get; protected set; }
         public List<AbstractAnimal>Animals { get; protected set;}
+        protected string _sound;
         public Aviary(string name, BiomeType biome, int square)
-
         {
             Name = name;
             Biome = BiomeType.Savanna ;
             Square = square;
             Animals = new List<AbstractAnimal>();    
         }
-
 
         public Message AddAnimal(AbstractAnimal animal)
         {
@@ -77,7 +76,7 @@ namespace Zoo
             return freeArea;                       
         }
 
-        private bool Neighbours(AbstractAnimal animal )
+        protected bool Neighbours(AbstractAnimal animal )
         {
             foreach(AbstractAnimal a in Animals)
             {
@@ -111,6 +110,15 @@ namespace Zoo
                     MessageType = MessageType.EmptyAviary,
                 };
             }
+        }
+
+        public string AnimalsDoSound(AbstractAnimal animal)
+        {
+            foreach (AbstractAnimal a in Animals)
+            { 
+               return AnimalsDoSound(a);
+            }
+            return $"{Name}, makes sounds {_sound}";
         }
 
         public override bool Equals(object? obj)
