@@ -11,9 +11,10 @@ namespace Zoo.Animals
         {
         public LemurAnimals(string name, int age) : base(name, age, 10, 1)
             {
-               Biome = BiomeType.Tundra;
-               Kind = AnimalFoodType.Herbivore;
-               FoodType = new List<string>() { "Flowers", "Fruits", "Leaves" };
+            Species = "Lemur";
+            Biome = BiomeType.Tundra;
+            IsPredator = false;
+            FoodType = new List<string>() { "Flowers", "Fruits", "Leaves" };
                _sound = "Aq-Aq-Aq";
             }
 

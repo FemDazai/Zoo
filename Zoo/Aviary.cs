@@ -9,9 +9,7 @@ namespace Zoo
         public string Name { get; protected set; }
         public BiomeType Biome { get; protected set; }
         public int Square { get; protected set; }
-        public AnimalFoodType AnimalFoodType { get; set; }
         public List<AbstractAnimal>Animals { get; protected set;}
-        protected int _filledArea;
         public Aviary(string name, BiomeType biome, int square)
 
         {
@@ -22,21 +20,89 @@ namespace Zoo
         }
 
 
-        public string AddAnimal(AbstractAnimal animal)
+        public Message AddAnimal(AbstractAnimal animal)
         {
             if (Biome != animal.Biome)
             {
-                return($" In {Name} didn't settle {animal.Name} due to biome");
+                return new Message()
+                {
+                    Text = $" In {Name} didn't settle {animal.Name} due to biome",
+                    SenderName = Name,
+                    SenderType = "Aviary",
+                    MessageType = MessageType.BiomesAreNotEqual,
+                };
             }
-            else if ( _filledArea < Square)
+            else if  ( FreeArea () < animal.Square)
             {
-                return($" In {Name} didn't settle {animal.Name} due to  lack of space");
+                return new Message()
+                {
+                    Text = $" In {Name} didn't settle {animal.Name} due to  lack of space",
+                    SenderName = Name,
+                    SenderType = "Aviary",
+                    MessageType = MessageType.LittleFreeSpace,
+                };
+            }
+            else if (!Neighbours(animal))
+            {
+                return new Message()
+                {
+                    Text = $" In {Name} didn't settle {animal.Name} due neighbours",
+                    SenderName = Name,
+                    SenderType = "Aviary",
+                    MessageType = MessageType.NeighborsDontFit,
+                };
             }
             else
-            { 
+            {  
                 Animals.Add(animal);
-                return($" In {Name} settle {animal.Name }");
-            }               
+                return new Message()
+                {
+                    Text = $" In {Name} settle {animal.Name}",
+                    SenderName = Name,
+                    SenderType = "Aviary",
+                    MessageType = MessageType.AnimalAdd,
+                };
+            }  
+        }
+
+        protected int FreeArea()
+        { 
+             int freeArea= Square;
+            foreach (AbstractAnimal a in Animals)
+            {
+                freeArea -= a.Square;
+            }
+            return freeArea;                       
+        }
+
+        private bool Neighbours(AbstractAnimal animal )
+        {
+            foreach(AbstractAnimal a in Animals)
+            {
+                if ((a.IsPredator || animal.IsPredator ) && a.Species != animal.Species)
+                {
+                    return false;
+                }              
+            }
+            return true;
+        }
+        public Message RemoveAnimal(AbstractAnimal animal)
+        {
+            if (Animals.Count != 0)
+            {
+                Animals.Remove(animal);
+                return new Message()
+                {
+                    Text = $"{animal.Name} evicted from {Name}",
+                    SenderName = Name,
+                    SenderType = "Aviary",
+                    MessageType = MessageType.AnimalRemove,
+                };
+            }
+            else
+            {
+                throw new ArgumentException("Empty aviary");
+            }
         }
     }
 }

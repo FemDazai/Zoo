@@ -1,5 +1,6 @@
 ﻿
 using Zoo.Optionss;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Zoo.Animals
 {
@@ -44,13 +45,15 @@ namespace Zoo.Animals
             }
         }
 
+        public string Species { get;  protected set; }
+
         public BiomeType Biome { get; protected set; }
 
         public int Square { get; protected set; }
 
         public int AmountOfFood { get; protected set; }
 
-        public AnimalFoodType Kind { get; protected set; }
+        public bool IsPredator { get; protected set; }
 
         public  List<string> FoodType;
 
@@ -64,27 +67,50 @@ namespace Zoo.Animals
         }
         protected string _sound;
 
-        public virtual void DoSound()
+        public virtual Message DoSound()
         {
-            Console.WriteLine($"{Name}, makes sounds {_sound}");
+            return new Message()
+            {
+                Text = $"{Name}, makes sounds {_sound}",
+                SenderName = Name,
+                SenderType ="AbstractAnimals",
+                MessageType=MessageType.AnimalDoSound
+            };
         }
-        
-        public void DoEating(string food,int amountOfFood)
+
+        public Message DoEating(string food, int amountOfFood)
         {
             if (!FoodType.Contains(food))
             {
-                Console.WriteLine($" {Name} don't eats {amountOfFood} kg {food}");
+                return new Message()
+                {
+                    Text = $"{Name} don't eats {amountOfFood} kg {food}",
+                    SenderName = Name,
+                    SenderType = "AbstractAnimals",
+                    MessageType = MessageType.DifferentTypeOfFood
+                };
             }
             else if (amountOfFood > AmountOfFood)
             {
-                Console.WriteLine($" {amountOfFood} kg  {food} , is too much for {Name}");
+                return new Message()
+                {
+                    Text = $"{amountOfFood} kg  {food} , is too much for {Name}",
+                    SenderName = Name,
+                    SenderType = "AbstractAnimals",
+                    MessageType = MessageType.ToMuchFood
+                };
             }
             else
             {
-                Console.WriteLine($" {Name} eats {amountOfFood} kg {food}");
+                return new Message()
+                {
+                    Text = $"{Name} eats {amountOfFood} kg {food}",
+                    SenderName = Name,
+                    SenderType = "AbstractAnimals",
+                    MessageType = MessageType.AnimalDoEating
+                };
             }
         }
         public abstract void DoPlay();
-
     }
 }

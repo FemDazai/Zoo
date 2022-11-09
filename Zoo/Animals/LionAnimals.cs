@@ -7,9 +7,10 @@ namespace Zoo.Animals
     {
         public LionAnimals(string name, int age) : base(name, age, 30,  6)
         {
+            Species = "Lion";
                Biome = BiomeType.Savanna;
-               Kind = AnimalFoodType.Predator;
-               FoodType = new List<string>() { "Meat", "Birds" };
+            IsPredator = true;
+            FoodType = new List<string>() { "Meat", "Birds" };
                _sound = "Rrar";
         }
 
