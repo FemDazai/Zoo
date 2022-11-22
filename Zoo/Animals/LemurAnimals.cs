@@ -17,7 +17,6 @@ namespace Zoo.Animals
             FoodType = new List<string>() { "Flowers", "Fruits", "Leaves" };
                _sound = "Aq-Aq-Aq";
             }
-
         public override Message DoPlay()
         {
             return new Message()

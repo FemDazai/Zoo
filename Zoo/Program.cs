@@ -21,11 +21,14 @@ using Zoo.Animals;
 //lemur.DoEating("Fruits",1);
 
 //lion.DoPlay();
-Aviary aviary = new Aviary("Volier1", BiomeType.Savanna, 80);
+Aviary aviary = new Aviary("Volier1", BiomeType.Savanna, 80, "Giraffe");
 GiraffeAnimals giraffe = new GiraffeAnimals("Melman", 2);
 GiraffeAnimals lion = new GiraffeAnimals("Melm", 2);
 Console.WriteLine(aviary.AddAnimal(giraffe));
 Console.WriteLine(aviary.AddAnimal(lion));
-Console.WriteLine(aviary.AnimalsDoSound(lion));
+//aviary.AnimalsDoSound();
 //Console.WriteLine(aviary.Remove(lion));\\
+
+
+
 

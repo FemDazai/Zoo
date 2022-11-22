@@ -13,7 +13,6 @@ namespace Zoo.Animals
             FoodType = new List<string>() { "Meat", "Birds","Beetles" };
             _sound = "Qruur";
         }
-
         public override Message DoPlay()
         {
             return new Message()

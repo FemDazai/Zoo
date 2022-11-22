@@ -15,16 +15,15 @@ namespace Zoo.Animals
             FoodType = new List<string>() { "Leaves" };
             _sound = "aa-aa-aa";
         }
-
-        public override Message  DoPlay() 
+        public override Message DoPlay()
         {
-          return new Message()
-        {
-            Text = $"{Name} run",
-            SenderName = Name,
-            SenderType = "Giraffe",
-            MessageType = MessageType.AnimalDoPlay,
-         };
+            return new Message()
+            {
+                Text = $"{Name} run",
+                SenderName = Name,
+                SenderType = "Giraffe",
+                MessageType = MessageType.AnimalDoPlay,
+            };
         }
     }
 }

@@ -2,23 +2,23 @@
 using System.Security.Cryptography.X509Certificates;
 using Zoo.Animals;
 using Zoo.Optionss;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Zoo
 {
     public class Aviary
     {
         public string Name { get; protected set; }
-        public string Species { get; protected set; }
         public BiomeType Biome { get; protected set; }
         public int Square { get; protected set; }
         public List<AbstractAnimal>Animals { get; protected set;}
         protected string _sound;
-        public Aviary(string name, BiomeType biome, int square)
+        public Aviary(string name, BiomeType biome, int square,string species )
         {
             Name = name;
             Biome = BiomeType.Savanna ;
             Square = square;
-            Animals = new List<AbstractAnimal>();    
+            Animals = new List<AbstractAnimal>();
         }
 
         public Message AddAnimal(AbstractAnimal animal)
@@ -27,7 +27,7 @@ namespace Zoo
             {
                 return new Message()
                 {
-                    Text = $" In {Name} didn't settle {animal.Name} due to biome",
+                    Text = $" In {Name} didn't settle {animal.Species} {animal.Name} due to biome",
                     SenderName = Name,
                     SenderType = "Aviary",
                     MessageType = MessageType.BiomesAreNotEqual,
@@ -37,7 +37,7 @@ namespace Zoo
             {
                 return new Message()
                 {
-                    Text = $" In {Name} didn't settle {animal.Name} due to  lack of space",
+                    Text = $" In {Name} didn't settle {animal.Species} {animal.Name} due to  lack of space",
                     SenderName = Name,
                     SenderType = "Aviary",
                     MessageType = MessageType.LittleFreeSpace,
@@ -47,7 +47,7 @@ namespace Zoo
             {
                 return new Message()
                 {
-                    Text = $" In {Name} didn't settle {animal.Name} due neighbours",
+                    Text = $" In {Name} didn't settle {animal.Species} {animal.Name} due neighbours",
                     SenderName = Name,
                     SenderType = "Aviary",
                     MessageType = MessageType.NeighborsDontFit,
@@ -58,7 +58,7 @@ namespace Zoo
                 Animals.Add(animal);
                 return new Message()
                 {
-                    Text = $" In {Name} settle {animal.Name}",
+                    Text = $" In {Name} settle {animal.Species} {animal.Name}",
                     SenderName = Name,
                     SenderType = "Aviary",
                     MessageType = MessageType.AnimalAdd,
@@ -94,7 +94,7 @@ namespace Zoo
                 Animals.Remove(animal);
                 return new Message()
                 {
-                    Text = $"{animal.Name} evicted from {Name}",
+                    Text = $"{animal.Species} {animal.Name} evicted from {Name}",
                     SenderName = Name,
                     SenderType = "Aviary",
                     MessageType = MessageType.AnimalRemove,
@@ -112,18 +112,16 @@ namespace Zoo
             }
         }
 
-        public string AnimalsDoSound(AbstractAnimal animal)
+        public void AnimalsDoSound()
         {
             foreach (AbstractAnimal a in Animals)
-            { 
-               return AnimalsDoSound(a);
+            {
+                Console.WriteLine(a.DoSound);
             }
-            return $"{Name}, makes sounds {_sound}";
         }
 
         public override bool Equals(object? obj)
         {
-
             return obj is Aviary aviary &&
                    Name == aviary.Name &&
                    Biome == aviary.Biome &&

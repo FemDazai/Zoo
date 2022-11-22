@@ -14,7 +14,6 @@ namespace Zoo.Animals
             FoodType = new List<string>() { "Grass", "Leaves","Bark" };
             _sound = "Firf-Firf";
         }
-
         public override Message DoPlay()
         {
             return new Message()
@@ -23,7 +22,8 @@ namespace Zoo.Animals
                 SenderName = Name,
                 SenderType = "Zebra",
                 MessageType = MessageType.AnimalDoPlay,
-            }; 
+            };
         }
+
     }
 }

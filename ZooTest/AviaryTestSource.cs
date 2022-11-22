@@ -16,29 +16,29 @@ namespace ZooTest
     {
         public IEnumerator GetEnumerator()
         {
-            AbstractAnimal animal = new  LionAnimals ("Alex",5);
-            Aviary aviary = new Aviary("Predators", BiomeType.Savanna , 70);
-            Aviary expectedAviary = new Aviary ("Predators", BiomeType.Savanna, 70);
-            expectedAviary.Animals.Add (new LionAnimals("Alex", 5));
+            AbstractAnimal animal = new LionAnimals("Alex", 5);
+            Aviary aviary = new Aviary("Predators", BiomeType.Savanna, 70, "Lion");
+            Aviary expectedAviary = new Aviary("Predators", BiomeType.Savanna, 70, "Lion");
+            expectedAviary.Animals.Add(new LionAnimals("Alex", 5));
             Message expectedMessage = new Message()
             {
-                 Text = $" In Predators settle Alex",
-                 SenderName = "Predators",
-                 SenderType = "Aviary",
-                 MessageType = MessageType.AnimalAdd,
+                Text = $" In Predators settle Lion Alex",
+                SenderName = "Predators",
+                SenderType = "Aviary",
+                MessageType = MessageType.AnimalAdd,
             };
 
             yield return new object[] { animal, aviary, expectedAviary, expectedMessage };
 
 
-            animal = new FoxAnimals("Pic",8);
-            aviary = new Aviary("Predators", BiomeType.Savanna, 50);
+            animal = new FoxAnimals("Pic", 8);
+            aviary = new Aviary("Predators", BiomeType.Savanna, 50, "Lion");
             aviary.Animals.Add(new LionAnimals("Zuba", 4));
-            expectedAviary = new Aviary("Predators", BiomeType.Savanna, 50);
+            expectedAviary = new Aviary("Predators", BiomeType.Savanna, 50, "Lion");
             expectedAviary.Animals.Add(new LionAnimals("Zuba", 4));
             expectedMessage = new Message()
             {
-                Text = $" In Predators didn't settle Pic due to biome",
+                Text = $" In Predators didn't settle Fox Pic due to biome",
                 SenderName = "Predators",
                 SenderType = "Aviary",
                 MessageType = MessageType.BiomesAreNotEqual,
@@ -48,13 +48,13 @@ namespace ZooTest
 
 
             animal = new LionAnimals("Zuba", 8);
-            aviary = new Aviary("Predators", BiomeType.Savanna, 50);
+            aviary = new Aviary("Predators", BiomeType.Savanna, 50, "Lion");
             aviary.Animals.Add(new LionAnimals("Alex", 4));
-            expectedAviary = new Aviary("Predators", BiomeType.Savanna, 50);
+            expectedAviary = new Aviary("Predators", BiomeType.Savanna, 50, "Lion");
             expectedAviary.Animals.Add(new LionAnimals("Alex", 4));
             expectedMessage = new Message()
             {
-                Text = $" In Predators didn't settle Zuba due to  lack of space",
+                Text = $" In Predators didn't settle Lion Zuba due to  lack of space",
                 SenderName = "Predators",
                 SenderType = "Aviary",
                 MessageType = MessageType.LittleFreeSpace,
@@ -64,13 +64,13 @@ namespace ZooTest
 
 
             animal = new GiraffeAnimals("Melman", 6);
-            aviary = new Aviary("Predators", BiomeType.Savanna, 90);
+            aviary = new Aviary("Predators", BiomeType.Savanna, 90, "Lion");
             aviary.Animals.Add(new LionAnimals("Alex", 4));
-            expectedAviary = new Aviary("Predators", BiomeType.Savanna, 90);
+            expectedAviary = new Aviary("Predators", BiomeType.Savanna, 90, "Lion");
             expectedAviary.Animals.Add(new LionAnimals("Alex", 4));
             expectedMessage = new Message()
             {
-                Text = $" In Predators didn't settle Melman due neighbours",
+                Text = $" In Predators didn't settle Giraffe Melman due neighbours",
                 SenderName = "Predators",
                 SenderType = "Aviary",
                 MessageType = MessageType.NeighborsDontFit,
@@ -84,15 +84,15 @@ namespace ZooTest
     {
         public IEnumerator GetEnumerator()
         {
-           AbstractAnimal animal = new LionAnimals("Zuba", 5);
-           Aviary aviary = new Aviary("Predators", BiomeType.Savanna, 90);
+            AbstractAnimal animal = new LionAnimals("Zuba", 5);
+            Aviary aviary = new Aviary("Predators", BiomeType.Savanna, 90, "Lion");
             aviary.Animals.Remove(new LionAnimals("Zuba", 5));
-            aviary.Animals.Add(new LionAnimals("Zub", 5));
-           Aviary expectedAviary = new Aviary("Predators", BiomeType.Savanna, 90);
-            expectedAviary.Animals.Add(new LionAnimals("Zub", 5));
+            aviary.Animals.Add(new LionAnimals("Lil", 5));
+            Aviary expectedAviary = new Aviary("Predators", BiomeType.Savanna, 90, "Lion");
+            expectedAviary.Animals.Add(new LionAnimals("Lil", 5));
             Message expectedMessage = new Message()
             {
-                Text = $"Zuba evicted from Predators",
+                Text = $"Lion Zuba evicted from Predators",
                 SenderName = "Predators",
                 SenderType = "Aviary",
                 MessageType = MessageType.AnimalRemove,
@@ -100,12 +100,12 @@ namespace ZooTest
 
             yield return new object[] { animal, aviary, expectedAviary, expectedMessage };
 
-             animal = new LionAnimals("Zuba", 5);
-             aviary = new Aviary("Predators", BiomeType.Savanna, 90);
-             aviary.Animals.Remove(new LionAnimals("Zuba", 5));
-             expectedAviary = new Aviary("Predators", BiomeType.Savanna, 90);
-             expectedAviary.Animals.Remove(new LionAnimals("Zuba", 5));
-             expectedMessage = new Message()
+            animal = new LionAnimals("Zuba", 5);
+            aviary = new Aviary("Predators", BiomeType.Savanna, 90, "Lion");
+            aviary.Animals.Remove(new LionAnimals("Zuba", 5));
+            expectedAviary = new Aviary("Predators", BiomeType.Savanna, 90, "Lion");
+            expectedAviary.Animals.Remove(new LionAnimals("Zuba", 5));
+            expectedMessage = new Message()
             {
                 Text = $"Empty Predators aviary ,no one to evict",
                 SenderName = "Predators",
@@ -117,5 +117,12 @@ namespace ZooTest
         }
     }
 
+    //public class DoSoundTestSource : IEnumerable
+    //{
+    //    public IEnumerator GetEnumerator()
+    //    {
+           
+    //    }
+    //}
 
 }
